@@ -1,0 +1,81 @@
+﻿@model IEnumerable<OZO.Models.UslugaReferentniTip>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Usluge - Referentni tipovi</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Napravi vezu U / RT</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Naziv usluge
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Cijena
+            </th>
+            <th>
+                Klijent
+            </th>
+            <th>
+                Kontakt
+            </th>
+            <th>
+                Lokacija
+            </th>
+            <th>
+                Referentni tip
+            </th>
+            <th>
+                Akcija
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Cijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Klijent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Kontakt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Lokacija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReferentniTipNavigation.Naziv)
+            </td>
+
+            <td>
+                <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

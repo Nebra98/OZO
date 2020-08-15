@@ -1,0 +1,91 @@
+﻿@model IEnumerable<OZO.Models.Posao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Poslovi</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Novi posao</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Opis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cijena)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Klijent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kontakt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lokacija)
+                </th>
+
+                <th>
+                    Naziv Natječaja
+                </th>
+                <th>
+                    Naziv Usluge
+                </th>
+
+                <th>
+
+                    <form asp-controller="Posao" asp-action="Index" method="get" class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pretraži po nazivu" aria-label="Search" name="id">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraži</button>
+                    </form>
+
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naziv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Opis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cijena)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klijent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kontakt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lokacija)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Naziv)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdUslugaNavigation.Naziv)
+                    </td>
+                    <td>
+
+                        <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

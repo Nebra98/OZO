@@ -1,0 +1,43 @@
+﻿@model OZO.Models.PosaoOprema
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <h1>Nova veza P / O</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdPosao" class="control-label">ID - Posao</label>
+                <select asp-for="IdPosao" class="form-control" asp-items="ViewBag.IdPosao">
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdOprema" class="control-label">ID - Oprema</label>
+                <select asp-for="IdOprema" class="form-control" asp-items="ViewBag.IdOprema">
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spremi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

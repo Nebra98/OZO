@@ -1,0 +1,136 @@
+﻿@model IEnumerable<OZO.Models.Zaposlenik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Zaposlenici</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Novi zaposlenik</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="CertifikatZaposlenik" asp-action="Index">Zaposlenici - Certifikati</a>
+
+    <div class="col-sm">
+        <form asp-controller="Zaposlenik" asp-action="CreateDocumentWithoutFilter" method="get">
+            <input class="btn btn-dark" type="submit" value="Potpun izvještaj" />
+        </form>
+    </div>
+
+</p>
+
+
+<form asp-controller="Zaposlenik" asp-action="CreateDocument" method="get">
+
+    <div class="row">
+
+        <div class="col-sm">
+            <select class="form-control" name="vrsta">
+                <option value="Ime">Ime</option>
+                <option value="Prezime">Prezime</option>
+                <option value="Datum">Datum Rođenja</option>
+                <option value="Plaća">Plaća</option>
+                <option value="NazivSkole">Naziv Škole</option>
+                <option value="Sprema">Stručna Sprema</option>
+
+            </select>
+        </div>
+
+        <div class="col-sm">
+            <input class="form-control" type="text" name="id" placeholder="Ovdje unesite vrijednost">
+        </div>
+
+        <div class="col-sm">
+            <select class="form-control" name="znak">
+                <option value="manje">Manje</option>
+                <option value="vise">Više</option>
+                <option value="jednako">Jednako</option>
+            </select>
+        </div>
+
+        <div class="col-sm">
+            <input class="btn btn-primary" type="submit" value="Napravi PDF" />
+        </div>
+
+
+    </div>
+
+</form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prezime)
+                </th>
+                <th>
+                    Datum rođenja
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plaća) (BAM)
+                </th>
+
+                <th>
+                    Naziv škole
+                </th>
+
+                <th>
+                    Stručna sprema
+                </th>
+
+                <th>
+                    Aktivan posao
+                </th>
+                <th>
+
+                    <form asp-controller="Zaposlenik" asp-action="Index" method="get" class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pretraži po nazivu" aria-label="Search" name="id">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraži</button>
+                    </form>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plaća)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NazivŠkole)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StručnaSprema)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPosaoNavigation.Naziv)
+                    </td>
+                    <td>
+                 
+
+                        <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

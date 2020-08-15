@@ -1,0 +1,43 @@
+﻿@model OZO.Models.NatjecajReferentniTip
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nova veza N / RT</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdNatjecaj" class="control-label">ID - Natječaja</label>
+                <select asp-for="IdNatjecaj" class="form-control" asp-items="ViewBag.IdNatjecaj">
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdReferentniTip" class="control-label">ID - Referentni tip</label>
+                <select asp-for="IdReferentniTip" class="form-control" asp-items="ViewBag.IdReferentniTip">
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spremi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

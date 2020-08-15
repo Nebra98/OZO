@@ -1,0 +1,52 @@
+﻿@model OZO.Models.Oprema
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nova oprema</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Naziv" class="control-label"></label>
+                <input asp-for="Naziv" class="form-control" />
+                <span asp-validation-for="Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dostupnost" /> @Html.DisplayNameFor(model => model.Dostupnost)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdReferentniTip" class="control-label">ID - Referentni tip</label>
+                <select asp-for="IdReferentniTip" class="form-control" asp-items="ViewBag.IdReferentniTip">
+
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spremi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

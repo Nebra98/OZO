@@ -1,0 +1,30 @@
+﻿@model OZO.Models.UslugaReferentniTip
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <h4>Usluga - Referentni tip</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           ID - Referentni tip
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdReferentniTipNavigation.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            ID - Usluge
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdUslugaNavigation.Naziv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Uredi</a> |
+    <a asp-action="Index">Natrag</a>
+</div>

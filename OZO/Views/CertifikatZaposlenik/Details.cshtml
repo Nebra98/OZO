@@ -1,0 +1,30 @@
+﻿@model OZO.Models.CertifikatZaposlenik
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <h4>Zaposlenik - Certifikat</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            ID - Certifikata 
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCertifikatNavigation.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            ID - Zaposlenika
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdZaposlenikNavigation.Ime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Uredi</a> |
+    <a asp-action="Index">Natrag</a>
+</div>

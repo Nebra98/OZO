@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OZO.Models.Certifikat>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Certifikati</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Novi certifikat</a>
+
+    <div class="col-sm">
+        <form asp-controller="Certifikat" asp-action="CreateDocumentWithoutFilter" method="get">
+            <input class="btn btn-dark" type="submit" value="Potpun izvještaj" />
+        </form>
+    </div>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+
+            <th>
+
+                <form asp-controller="Certifikat" asp-action="Index" method="get" class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pretraži po nazivu" aria-label="Search" name="id">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraži</button>
+                </form>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+
+                <td>
+                  
+                    <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

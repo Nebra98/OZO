@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\bulic\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\bulic\\.nuget\\packages"
+    ]
+  }
+}

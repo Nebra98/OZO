@@ -1,0 +1,49 @@
+﻿@model OZO.Models.Zaposlenik
+
+@{ ViewData["Title"] = "Delete"; }
+
+<h1>Izbriši</h1>
+
+<h5>Jeste li sigurni da želiti izbrisati zaposlenika "@Html.DisplayFor(model => model.Ime)"?</h5>
+<div>
+    <p>Informacije o zaposleniku</p>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Plaća)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Plaća)
+        </dd>
+        <dt class="col-sm-2">
+            ID - Posla
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPosaoNavigation.Klijent)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Izbriši" class="btn btn-danger" /> |
+        <a asp-action="Index">Natrag</a>
+    </form>
+</div>

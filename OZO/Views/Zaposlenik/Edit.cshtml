@@ -1,0 +1,73 @@
+﻿@model OZO.Models.Zaposlenik
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Uredi</h1>
+
+<h4>Zaposlenik</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum" class="control-label"></label>
+                <input asp-for="Datum" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Plaća" class="control-label"></label>
+                <input asp-for="Plaća" class="form-control" />
+                <span asp-validation-for="Plaća" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NazivŠkole" class="control-label">Naziv škole</label>
+                <input asp-for="NazivŠkole" class="form-control" />
+                <span asp-validation-for="NazivŠkole" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="StručnaSprema" class="control-label">Stručna sprema</label>
+                <input asp-for="StručnaSprema" class="form-control" />
+                <span asp-validation-for="StručnaSprema" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="IdPosao" class="control-label">ID - Posla</label>
+                <select asp-for="IdPosao" class="form-control" asp-items="ViewBag.IdPosao">
+                    <option selected value="">
+                        -- Odaberi --
+                    </option>
+                </select>
+                <span asp-validation-for="IdPosao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ažuriraj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Natrag</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

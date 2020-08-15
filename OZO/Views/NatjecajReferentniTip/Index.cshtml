@@ -1,0 +1,87 @@
+﻿@model IEnumerable<OZO.Models.NatjecajReferentniTip>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Natječaji - Referentni tipovi</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Napravi vezu N / RT</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Naziv natječaja
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Cijena
+            </th>
+            <th>
+                Poslodavac
+            </th>
+            <th>
+                Kontakt
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Lokacija
+            </th>
+            <th>
+                Referentni tip
+            </th>
+            <th>
+                Akcija
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Cijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Poslodavac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Kontakt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNatjecajNavigation.Lokacija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReferentniTipNavigation.Naziv)
+            </td>
+            <td>
+            
+                <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

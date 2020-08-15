@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OZO.Models.CertifikatZaposlenik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>Zaposlenici - Certifikati</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Napravi vezu  Z / C</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID - Certifikata
+            </th>
+            <th>
+                ID - Zaposlenika
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCertifikatNavigation.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdZaposlenikNavigation.Ime)
+            </td>
+            <td>
+                <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

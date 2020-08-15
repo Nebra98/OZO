@@ -1,0 +1,65 @@
+﻿@model OZO.Models.Zaposlenik
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <h1>Detalji zaposlenika "@Html.DisplayFor(model => model.Ime)"</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Plaća)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Plaća)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Naziv škole
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NazivŠkole)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            Stručna sprema
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StručnaSprema)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            ID - Posla
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPosaoNavigation.Naziv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Uredi</a> |
+    <a asp-action="Index">Natrag</a>
+</div>

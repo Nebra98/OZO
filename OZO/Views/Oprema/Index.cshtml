@@ -1,0 +1,99 @@
+﻿@model IEnumerable<OZO.Models.Oprema>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Oprema</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nova oprema</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="PosaoOprema" asp-action="Index">Posao - Oprema</a>
+
+
+    <div class="col-sm">
+        <form asp-controller="Oprema" asp-action="CreateDocumentWithoutFilter" method="get">
+            <input class="btn btn-dark" type="submit" value="Potpun izvještaj" />
+        </form>
+    </div>
+
+</p>
+
+
+
+    <form asp-controller="Oprema" asp-action="CreateDocument" method="get">
+
+        <div class="row">
+
+            <div class="col-sm">
+                <select class="form-control" name="vrsta">
+                    <option value="Naziv">Naziv</option>
+                    <option value="Status">Status</option>
+                    <option value="Dostupnost">Dostupnost</option>
+
+                </select>
+            </div>
+
+            <div class="col-sm">
+                <input class="form-control" type="text" name="id" placeholder="Ovdje unesite vrijednost">
+            </div>
+
+            <div class="col-sm">
+                <input class="btn btn-primary" type="submit" value="Napravi PDF" />
+            </div>
+
+
+        </div>
+
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naziv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dostupnost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdReferentniTipNavigation)
+                </th>
+                <th>
+
+                    <form asp-controller="Oprema" asp-action="Index" method="get" class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pretraži po nazivu" aria-label="Search" name="id">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraži</button>
+                    </form>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Naziv)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dostupnost)
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdReferentniTipNavigation.Naziv)
+
+    </td>
+    <td>
+        <a class="btn btn-warning" role="button" asp-action="Edit" asp-route-id="@item.Id">Uredi</a>
+        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalji</a>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+    </td>
+</tr>            }
+        </tbody>
+    </table>
